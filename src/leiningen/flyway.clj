@@ -2,9 +2,10 @@
   (:require [leiningen.core.main :refer [info]]
             [ga.rugal.flyway :as fw]))
 
-(def ^{:private true} task-map 
+(def ^{:private true} task-map
   {:clean fw/clean
    :info  fw/info
+   :migrate fw/migrate
    })
 
 (defn flyway
@@ -13,5 +14,7 @@
   [project task]
 
   (info "Execute task: " task)
-  ((task-map (keyword task)) project)
-  )
+  (let [config (:flyway project)
+        f (fw/make-flyway config)]
+    ((task-map (keyword task)) f)
+    ))

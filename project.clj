@@ -11,6 +11,9 @@
   :plugins      [[com.jakemccrary/lein-test-refresh "0.25.0"]
                  [lein-bikeshed "0.5.2"]]
 
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.11.1"]
+                                  [com.h2database/h2 "2.2.224"]]}}
+
   :test-refresh {:changes-only true
                  :quiet true}
 
