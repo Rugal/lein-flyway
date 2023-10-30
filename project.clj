@@ -28,19 +28,26 @@
 
   :eval-in-leiningen true
 
+  :source-paths ["src/main/clojure"]
+  :java-source-paths ["src/main/java"]  ; Java source is stored separately.
+  :test-paths ["src/test/clojure"]
+  :resource-paths ["src/main/resources"] ; Non-code files included in classpath/jar.
+
   :dependencies [[org.flywaydb/flyway-core "9.22.3"]]
 
-  :plugins      [[com.jakemccrary/lein-test-refresh "0.25.0"]
+  :plugins      [[lein-environ "1.2.0"]
+                 [lein-pprint "1.3.2"]
+                 [lein-release "1.0.0"]
                  [lein-bikeshed "0.5.2"]]
 
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.11.1"]
-                                  [com.h2database/h2 "2.2.224"]]}
+                                  [com.h2database/h2 "2.2.224"]]
+                   :plugins [[com.jakemccrary/lein-test-refresh "0.25.0"]]}
              :uberjar     {:aot :all}
-             :production  {}
-             }
+             :production  {}}
 
-  :test-refresh {:changes-only true
-                 :quiet true}
+  :test-refresh {:changes-only false
+                 :quiet false}
 
   :bikeshed {:var-redefs           false
              :trailing-blank-lines false

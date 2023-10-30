@@ -10,9 +10,9 @@
              :password                  "password"
              :url                       "jdbc:h2:mem:h2db"
              :cleanDisabled             "false"
-             :locations                 ["filesystem:./resources/database/"]})
+             :locations                 ["filesystem:./src/test/resources/database/"]})
 
-(def project-config {:flyway-configuration-path "test-resources/flyway.edn"})
+(def project-config {:flyway-configuration-path "src/test/resources/database/flyway.edn"})
 
 (def ^Properties properties (f/map-2-property config))
 
@@ -39,7 +39,7 @@
 
 (deftest read-configuration
   (testing "Read EDN configuration"
-    [(let [p (f/read-configuration "test-resources/flyway.edn")]
+    [(let [p (f/read-configuration "src/test/resources/database/flyway.edn")]
        (is (instance? Properties properties))
        (is (= 5 (count properties)))
        (is (= (:user config) (.getProperty p "flyway.user"))))]))
