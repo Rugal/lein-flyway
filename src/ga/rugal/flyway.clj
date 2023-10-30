@@ -13,7 +13,7 @@
     )
   )
 
-(defn make-flyway-prop
+(defn ^{:private true} make-flyway-prop
   "Given a keyword, create a property for flyway to use in a `java.util.Properties` object."
   [k]
   (let [fkey (str/split (name k) #"[-_]")]
@@ -41,6 +41,11 @@
       (.configuration (map-2-property config))
       (.load)))
 
+(defn clean
+  "Execute Flyway clean"
+  [^Flyway fw]
+  (. fw clean))
+
 (defn info
   "Execute Flyway info"
   [^Flyway fw]
@@ -51,7 +56,12 @@
   [^Flyway fw]
   (. fw migrate))
 
-(defn clean
-  "Execute Flyway clean"
+(defn baseline
+  "Execute Flyway baseline"
   [^Flyway fw]
-  (. fw clean))
+  (. fw baseline))
+
+(defn validate
+  "Validate flyway migration status"
+  [^Flyway fw]
+  (. fw validate))

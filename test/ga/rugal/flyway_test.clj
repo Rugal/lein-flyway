@@ -1,5 +1,5 @@
 (ns ga.rugal.flyway-test
-  (:require [clojure.test :as t :refer [deftest is]]
+  (:require [clojure.test :as t :refer [deftest is testing]]
             [ga.rugal.flyway :as f])
   (:import 
     java.util.Properties
@@ -14,23 +14,32 @@
 
 (def ^Properties properties (f/map-2-property config))
 
+(deftest alternate-use
+  (testing "test a vector of `is`"
+    [(is true)
+     (is true)
+     (is true)]))
+
 (deftest map-2-property
-  (is (instance? Properties properties))
-  (is (= 5 (count properties)))
-  (is (= (:user config) (.getProperty properties "flyway.user")))
-  )
+  (testing "map-2-property verification"
+    [(is (instance? Properties properties))
+     (is (= 5 (count properties)))
+     (is (= (:user config) (.getProperty properties "flyway.user")))]
+    ))
 
 (deftest make-flyway
-  (let [fw (f/make-flyway config)]
-    (is (instance? Flyway fw))
-    (println (MigrationInfoDumper/dumpToAsciiTable (.. fw info all)))
-    )
-  )
+  (testing "flyway object creation"
+    [(let [fw (f/make-flyway config)]
+       (println (MigrationInfoDumper/dumpToAsciiTable (.. fw info all)))
+       (is (instance? Flyway fw))
+       )]))
 
 (deftest flyway-task
-  (let [fw (f/make-flyway config)]
-    (f/info fw)
-    (f/clean fw)
-    (f/migrate fw)
-    )
-  )
+  (testing "Iterate each task"
+    [(let [fw (f/make-flyway config)]
+       (f/clean fw)
+       (f/info fw)
+       (f/migrate fw)
+       ; (f/validate fw)
+       (f/baseline fw)
+       )]))
