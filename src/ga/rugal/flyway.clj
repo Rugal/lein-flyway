@@ -1,4 +1,5 @@
 (ns ga.rugal.flyway
+  "Contains primary logic to convert and execute flyway task"
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.string :as str]
@@ -29,9 +30,11 @@
         (when v
           (cond
             (vector? v) (.setProperty ^Properties % (make-flyway-prop k) (str/join "," v))
-            (map? v)    (doseq [[k2 v2] v]
-                          (.setProperty ^Properties % (str (make-flyway-prop k) "." (name k2)) (str v2)))
-            :else       (.setProperty ^Properties % (make-flyway-prop k) (str v))))))))
+            (map? v)  (doseq [[k2 v2] v]
+                        (.setProperty ^Properties %
+                                      (str (make-flyway-prop k) "." (name k2))
+                                      (str v2)))
+            :else     (.setProperty ^Properties % (make-flyway-prop k) (str v))))))))
 
 (defn make-flyway
   "Create Flyway configuration object"

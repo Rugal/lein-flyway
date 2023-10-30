@@ -1,7 +1,7 @@
 (ns ga.rugal.flyway-test
   (:require [clojure.test :as t :refer [deftest is testing]]
             [ga.rugal.flyway :as f])
-  (:import 
+  (:import
     java.util.Properties
     [org.flywaydb.core Flyway]
     [org.flywaydb.core.internal.info MigrationInfoDumper]))
