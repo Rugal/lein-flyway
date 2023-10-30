@@ -53,7 +53,7 @@
   ^Flyway [config]
 
   (-> (FluentConfiguration.)
-      (.configuration (map-2-property config))
+      (.configuration (read-configuration (:flyway-configuration-path config)))
       (.load)))
 
 (defn clean

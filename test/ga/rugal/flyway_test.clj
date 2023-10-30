@@ -16,40 +16,30 @@
 
 (def ^Properties properties (f/map-2-property config))
 
-(deftest alternate-use
-  (testing "test a vector of `is`"
-    [(is true)
-     (is true)
-     (is true)]))
-
 (deftest map-2-property
   (testing "map-2-property verification"
     [(is (instance? Properties properties))
      (is (= 5 (count properties)))
-     (is (= (:user config) (.getProperty properties "flyway.user")))]
-    ))
+     (is (= (:user config) (.getProperty properties "flyway.user")))]))
 
 (deftest make-flyway
   (testing "flyway object creation"
-    [(let [fw (f/make-flyway config)]
+    [(let [fw (f/make-flyway project-config)]
        (println (MigrationInfoDumper/dumpToAsciiTable (.. fw info all)))
-       (is (instance? Flyway fw))
-       )]))
+       (is (instance? Flyway fw)))]))
 
 (deftest flyway-task
   (testing "Iterate each task"
-    [(let [fw (f/make-flyway config)]
+    [(let [fw (f/make-flyway project-config)]
        (f/clean fw)
        (f/info fw)
        (f/migrate fw)
        ; (f/validate fw)
-       (f/baseline fw)
-       )]))
+       (f/baseline fw))]))
 
 (deftest read-configuration
   (testing "Read EDN configuration"
     [(let [p (f/read-configuration "test-resources/flyway.edn")]
        (is (instance? Properties properties))
        (is (= 5 (count properties)))
-       (is (= (:user config) (.getProperty p "flyway.user")))
-       )]))
+       (is (= (:user config) (.getProperty p "flyway.user"))))]))
