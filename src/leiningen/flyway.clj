@@ -5,16 +5,6 @@
 
 (def ^:private CURRENT_VERSION "0.0.0-SNAPSHOT")
 
-; (def ^{:private true} task-map
-;   "Map task keyword to actual function object"
-;   {:clean fw/clean
-;    :info  fw/info
-;    :migrate fw/migrate
-;    :validate fw/validate
-;    :baseline fw/baseline})
-
-(defn rugal [c] (eval c))
-
 (defn flyway
   "To execute flyway task."
   {:help-arglists '([clean baseline migrate info validate])}

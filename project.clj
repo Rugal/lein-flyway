@@ -14,9 +14,7 @@
 
   :eval-in-leiningen true
 
-  :dependencies [[org.flywaydb/flyway-core "9.22.3"]
-                 ; [com.google.code.gson/gson "2.10.1"]
-                 ]
+  :dependencies [[org.flywaydb/flyway-core "9.22.3"]]
 
   :plugins      [[com.jakemccrary/lein-test-refresh "0.25.0"]
                  [lein-bikeshed "0.5.2"]]
