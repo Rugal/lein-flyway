@@ -1,6 +1,7 @@
 (ns leiningen.flyway
   "Let leiningen to execute task"
   (:require [leiningen.core.main :refer [info]]
+            [leiningen.core.eval :refer [eval-in-project]]
             [ga.rugal.flyway :as fw]))
 
 (def ^{:private true} task-map
@@ -18,6 +19,9 @@
   [project task]
 
   (info "Execute task: " task)
-  (let [f (fw/make-flyway (:flyway project))]
-    ((task-map (keyword task)) f)
-    ))
+  (eval-in-project
+    project
+    `(let [f (fw/make-flyway (:flyway project))] ((task-map (keyword task)) f))
+    '(require '[ga.rugal.flyway :as fw])
+    )
+  (info "Finish task: " task))
