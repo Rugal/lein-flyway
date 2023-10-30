@@ -1,27 +1,38 @@
 (ns leiningen.flyway
   "Let leiningen to execute task"
   (:require [leiningen.core.main :refer [info]]
-            [leiningen.core.eval :refer [eval-in-project]]
-            [ga.rugal.flyway :as fw]))
+            [leiningen.core.eval :refer [eval-in-project]]))
 
-(def ^{:private true} task-map
-  "Map task keyword to actual function object"
-  {:clean fw/clean
-   :info  fw/info
-   :migrate fw/migrate
-   :validate fw/validate
-   :baseline fw/baseline
-   })
+(def ^:private CURRENT_VERSION "0.0.0-SNAPSHOT")
+
+; (def ^{:private true} task-map
+;   "Map task keyword to actual function object"
+;   {:clean fw/clean
+;    :info  fw/info
+;    :migrate fw/migrate
+;    :validate fw/validate
+;    :baseline fw/baseline})
+
+(defn rugal [c] (eval c))
 
 (defn flyway
   "To execute flyway task."
   {:help-arglists '([clean baseline migrate info validate])}
   [project task]
 
-  (info "Execute task: " task)
-  (eval-in-project
-    project
-    `(let [f (fw/make-flyway (:flyway project))] ((task-map (keyword task)) f))
-    '(require '[ga.rugal.flyway :as fw])
-    )
-  (info "Finish task: " task))
+  (info "Execute task:" task)
+
+  (let [config (:flyway project)]
+    (info config)
+    (eval-in-project
+      (update-in project [:dependencies] conj ['ga.rugal/lein-flyway CURRENT_VERSION])
+
+      `(let [f# (fw/make-flyway ~config)
+             task-map# {:clean fw/clean :info  fw/info :migrate fw/migrate :validate fw/validate :baseline fw/baseline}
+             t# (task-map# (keyword ~task))]
+         (t# f#))
+
+      '(require '[ga.rugal.flyway :as fw])
+      ))
+
+  (info "Finish task:" task))

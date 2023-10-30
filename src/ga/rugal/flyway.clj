@@ -2,17 +2,12 @@
   "Contains primary logic to convert and execute flyway task"
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
-            [clojure.string :as str]
-            )
+            [clojure.string :as str])
   (:import
-    ; [java.io File PushbackReader StringReader]
     [java.util Properties]
     [org.flywaydb.core Flyway]
     [org.flywaydb.core.api.configuration FluentConfiguration]
-    ; [org.flywaydb.core.internal.util FileUtils]
-    [org.flywaydb.core.internal.info MigrationInfoDumper]
-    )
-  )
+    [org.flywaydb.core.internal.info MigrationInfoDumper]))
 
 (defn ^{:private true} make-flyway-prop
   "Given a keyword, create a property for flyway to use in a `java.util.Properties` object."
