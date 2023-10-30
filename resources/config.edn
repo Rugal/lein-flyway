@@ -1,7 +1,0 @@
-{:application/main      {:get #ig/ref :dao/course:get}
-
- ; DAO
- :dao/course:get      {:db #ig/ref :database/connection}
-
- ; database
- :database/connection {}}

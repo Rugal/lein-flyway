@@ -1,0 +1,5 @@
+{:user                      "root"
+ :password                  "password"
+ :url                       "jdbc:h2:mem:h2db"
+ :cleanDisabled             "false"
+ :locations                 ["filesystem:./test-resources/database/"]}

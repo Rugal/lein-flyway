@@ -12,6 +12,8 @@
              :cleanDisabled             "false"
              :locations                 ["filesystem:./resources/database/"]})
 
+(def project-config {:flyway-configuration-path "test-resources/flyway.edn"})
+
 (def ^Properties properties (f/map-2-property config))
 
 (deftest alternate-use
@@ -42,4 +44,12 @@
        (f/migrate fw)
        ; (f/validate fw)
        (f/baseline fw)
+       )]))
+
+(deftest read-configuration
+  (testing "Read EDN configuration"
+    [(let [p (f/read-configuration "test-resources/flyway.edn")]
+       (is (instance? Properties properties))
+       (is (= 5 (count properties)))
+       (is (= (:user config) (.getProperty p "flyway.user")))
        )]))
