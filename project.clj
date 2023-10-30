@@ -1,7 +1,7 @@
 (defproject ga.rugal/lein-flyway "0.0.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
+  :description "Flyway leiningen plugin that is upgraded to match flyway-core 9.22.x version"
+  :url "https://github.com/Rugal/lein-flyway"
+  :license {:name "EPL-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :mirrors {#"clojars"
             {:name "Clojar Mirror"
@@ -11,6 +11,20 @@
             {:name "Maven aliyun"
              :url "https://maven.aliyun.com/repository/public"
              :repo-manager true}}
+
+  :scm {:url "git@github.com:Rugal/lein-flyway.git"}
+
+  :pom-addition [:developers 
+                 [:developer
+                  [:name "Zhiheng Li"]
+                  [:url "https://github.com/metaphor"]
+                  [:email "zhiheng.li.metaphor@gmail.com"]
+                  [:timezone "+8"]]
+                 [:developer
+                  [:name "Rugal Bernstein"]
+                  [:url "https://github.com/Rugal"]
+                  [:email "this@rug.al"]
+                  [:timezone "+8"]]]
 
   :eval-in-leiningen true
 
