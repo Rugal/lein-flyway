@@ -28,7 +28,7 @@
 
   :eval-in-leiningen true
 
-  :source-paths ["src/main/clojure"]
+  :source-paths ["src" "src/main/clojure"]
   :java-source-paths ["src/main/java"]  ; Java source is stored separately.
   :test-paths ["src/test/clojure"]
   :resource-paths ["src/main/resources"] ; Non-code files included in classpath/jar.

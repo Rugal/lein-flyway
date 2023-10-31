@@ -22,6 +22,11 @@
   [file]
   (edn/read (java.io.PushbackReader. (io/reader file))))
 
+(defn ^{:private true} enrich-configuration
+  "Enrich existing configuration with specific parameter"
+  [config]
+  (assoc config :loggers ["slf4j"]))
+
 (defn map-2-property
   "Convert clojure map to java Properties"
   ^Properties [config]
@@ -41,6 +46,7 @@
   ^Properties [path]
   (-> path
       (read-edn)
+      ; (enrich-configuration)
       (map-2-property)))
 
 (defn make-flyway

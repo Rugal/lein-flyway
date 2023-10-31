@@ -2,4 +2,5 @@
  :password                  "password"
  :url                       "jdbc:h2:mem:h2db"
  :cleanDisabled             "false"
+ ; :loggers                   ["slf4j"]
  :locations                 ["filesystem:./resources/database/"]}

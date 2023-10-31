@@ -14,18 +14,16 @@
                  ;ring
                  ;database
                  [com.h2database/h2 "2.2.224"]
-                 ;ORM
+                 ; logger
+                 ; [org.slf4j/slf4j-api "2.0.9"]
+                 [org.slf4j/slf4j-simple "2.0.9"]
                  ;nrepl
                  [nrepl/lein-nrepl "0.3.2"]
-                 ;graphql
                  [integrant "0.8.0"]
                  [environ "1.2.0"]]
   :plugins [[lein-bikeshed "0.5.2"]
             [lein-environ "1.2.0"]
-            [lein-pprint "1.3.2"]
-            ; [lein-flyway "0.0.0-SNAPSHOT"] ;left out in order to avoid repetition
-            [lein-cloverage "1.2.2"]
-            [com.jakemccrary/lein-test-refresh "0.25.0"]]
+            [lein-pprint "1.3.2"]]
   :main ^:skip-aot ga.rugal.clojure.main
   :ring {:handler       ga.rugal.clojure.main/-main
          :auto-reload?  true
@@ -36,6 +34,4 @@
              :trailing-blank-lines false
              :max-line-length      100
              :name-collisions      false}
-  :cloverage {:junit?         true
-              :fail-threshold 90}
   :profiles {})
