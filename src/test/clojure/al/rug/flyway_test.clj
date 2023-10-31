@@ -1,6 +1,6 @@
-(ns ga.rugal.flyway-test
+(ns al.rug.flyway-test
   (:require [clojure.test :as t :refer [deftest is testing]]
-            [ga.rugal.flyway :as f])
+            [al.rug.flyway :as f])
   (:import
     java.util.Properties
     [org.flywaydb.core Flyway]

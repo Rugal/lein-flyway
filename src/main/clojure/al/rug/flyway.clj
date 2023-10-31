@@ -1,4 +1,4 @@
-(ns ga.rugal.flyway
+(ns al.rug.flyway
   "Contains primary logic to convert and execute flyway task"
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
