@@ -12,6 +12,10 @@
              :url "https://maven.aliyun.com/repository/public"
              :repo-manager true}}
 
+  ; in order to avoid extra parameter
+  :deploy-repositories [["releases" :clojars]
+                        ["snapshots" :clojars]]
+
   :scm {:url "git@github.com:Rugal/lein-flyway.git"}
 
   :pom-addition [:developers 

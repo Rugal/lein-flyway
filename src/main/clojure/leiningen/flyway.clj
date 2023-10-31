@@ -3,7 +3,7 @@
   (:require [leiningen.core.main :refer [info]]
             [leiningen.core.eval :refer [eval-in-project]]))
 
-(def ^:private CURRENT_VERSION "0.0.0-SNAPSHOT")
+(def ^:private CURRENT_VERSION "0.0.0")
 
 (defn flyway
   "To execute flyway task."
