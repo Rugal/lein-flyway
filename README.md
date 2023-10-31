@@ -2,7 +2,10 @@
 
 [![Clojars Project](https://img.shields.io/clojars/v/al.rug/lein-flyway.svg)](https://clojars.org/al.rug/lein-flyway)
 
-[lein-flyway](https://github.com/metaphor/lein-flyway)
+This is an flyway plugin that fits for the latest `flyway-core:9.22.3`.  
+
+Why having another flyway plugin given we already have [lein-flyway](https://github.com/metaphor/lein-flyway)?  Seems like this plugin is inactive.  
+Nothing special but get myself familiarize with leiningen [plugin](https://leiningen.org/plugins.html) development, along with playing around flyway-core API.  
 
 ## Usage
 
