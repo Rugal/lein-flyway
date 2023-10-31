@@ -1,4 +1,4 @@
-(defproject al.rug/lein-flyway "0.0.0-SNAPSHOT"
+(defproject al.rug/lein-flyway "0.0.0"
   :description "Flyway leiningen plugin that is upgraded to match flyway-core 9.22.x version"
   :url "https://github.com/Rugal/lein-flyway"
   :license {:name "EPL-2.0"
