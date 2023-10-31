@@ -23,6 +23,7 @@
   :plugins [[lein-bikeshed "0.5.2"]
             [lein-environ "1.2.0"]
             [lein-pprint "1.3.2"]
+            ; [lein-flyway "0.0.0-SNAPSHOT"] ;left out in order to avoid repetition
             [lein-cloverage "1.2.2"]
             [com.jakemccrary/lein-test-refresh "0.25.0"]]
   :main ^:skip-aot ga.rugal.clojure.main
