@@ -14,7 +14,6 @@
 
   (let [config (:flyway project)]
     (info config)
-    (info project)
     (eval-in-project
       (update-in project [:dependencies] conj ['al.rug/lein-flyway CURRENT_VERSION])
 

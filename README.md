@@ -40,3 +40,6 @@ Create file `sample/.lein-classpath`, add source folder in it to avoid installat
 ```
 ~/Workspace/lein-flyway/src:
 ```
+
+## deploy to clojars
+Setup [authentication](https://codeberg.org/leiningen/leiningen/src/branch/stable/doc/DEPLOY.md#authentication) and use `lein deploy clojars`  
