@@ -18,7 +18,7 @@
       (update-in project [:dependencies] conj ['al.rug/lein-flyway CURRENT_VERSION])
 
       `(let [f# (fw/make-flyway ~config)
-             task-map# {:clean fw/clean :info  fw/info :migrate fw/migrate :validate fw/validate :baseline fw/baseline}
+             task-map# {:clean fw/clean :info fw/info :migrate fw/migrate :validate fw/validate :baseline fw/baseline}
              t# (task-map# (keyword ~task))]
          (t# f#))
 
