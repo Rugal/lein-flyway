@@ -5,12 +5,11 @@
             [clojure.string :as str]
             [leiningen.core.main :as l])
   (:import
-    [java.util Properties]
-    [org.flywaydb.core Flyway]
-    [org.flywaydb.core.api.configuration FluentConfiguration]
-    [org.flywaydb.core.internal.info MigrationInfoDumper]))
+   [java.util Properties]
+   [org.flywaydb.core Flyway]
+   [org.flywaydb.core.api.configuration FluentConfiguration]
+   [org.flywaydb.core.internal.info MigrationInfoDumper]))
 
-; https://javadoc.io/doc/org.flywaydb/flyway-core/latest/org/flywaydb/core/api/configuration/FluentConfiguration.html
 (defn ^{:private true} make-flyway-prop
   "Given a keyword, create a property for flyway to use in a `java.util.Properties` object."
   [k]
@@ -64,7 +63,7 @@
 (defn clean
   "Execute Flyway clean"
   [^Flyway fw]
-  (. fw clean))
+  (.clean fw))
 
 (defn info
   "Execute Flyway info"
@@ -74,14 +73,14 @@
 (defn migrate
   "Execute Flyway migrate"
   [^Flyway fw]
-  (. fw migrate))
+  (.migrate fw))
 
 (defn baseline
   "Execute Flyway baseline"
   [^Flyway fw]
-  (. fw baseline))
+  (.baseline fw))
 
 (defn validate
   "Validate flyway migration status"
   [^Flyway fw]
-  (. fw validate))
+  (.validate fw))

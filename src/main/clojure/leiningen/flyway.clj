@@ -15,14 +15,13 @@
   (let [config (:flyway project)]
     (info config)
     (eval-in-project
-      (update-in project [:dependencies] conj ['al.rug/lein-flyway CURRENT_VERSION])
+     (update-in project [:dependencies] conj ['al.rug/lein-flyway CURRENT_VERSION])
 
-      `(let [f# (fw/make-flyway ~config)
-             task-map# {:clean fw/clean :info fw/info :migrate fw/migrate :validate fw/validate :baseline fw/baseline}
-             t# (task-map# (keyword ~task))]
-         (t# f#))
+     `(let [f# (fw/make-flyway ~config)
+            task-map# {:clean fw/clean :info fw/info :migrate fw/migrate :validate fw/validate :baseline fw/baseline}
+            t# (task-map# (keyword ~task))]
+        (t# f#))
 
-      '(require '[al.rug.flyway :as fw])
-      ))
+     '(require '[al.rug.flyway :as fw])))
 
   (info "Finish task:" task))

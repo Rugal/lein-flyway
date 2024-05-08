@@ -2,9 +2,9 @@
   (:require [clojure.test :as t :refer [deftest is testing]]
             [al.rug.flyway :as f])
   (:import
-    java.util.Properties
-    [org.flywaydb.core Flyway]
-    [org.flywaydb.core.internal.info MigrationInfoDumper]))
+   java.util.Properties
+   [org.flywaydb.core Flyway]
+   [org.flywaydb.core.internal.info MigrationInfoDumper]))
 
 (def config {:user                      "root"
              :password                  "password"

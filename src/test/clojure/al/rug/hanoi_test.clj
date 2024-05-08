@@ -8,10 +8,7 @@
     (do
       (do-hanoi from to temp (- disk 1))
       (println (format "Disk [%d] : %s -> %s" disk from to))
-      (do-hanoi temp from to (- disk 1))
-      )
-    )
-  )
+      (do-hanoi temp from to (- disk 1)))))
 
 (defn hanoi
   "Entrance of hanoi tower"
@@ -23,5 +20,4 @@
     ; (hanoi 1)
     ; (hanoi 2)
     ; (hanoi 3)
-    (hanoi 8)
-    ))
+    (hanoi 4)))

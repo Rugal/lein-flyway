@@ -43,11 +43,17 @@
                  [lein-pprint "1.3.2"]
                  [lein-release "1.0.0"]
                  [lein-try "0.4.3"]
+                ;;  [lein-kibit "0.1.8"]
+                 [walmartlabs/shared-deps "0.2.8"]
+                 [org.clojars.kurtharriger/lein-depgraph "0.1.0"]
+                 [lein-ancient "1.0.0-RC3"]
                  [lein-collisions "0.1.4"]
+                 [dev.weavejester/lein-cljfmt "0.12.0"]
+                 [lein-vanity "0.2.0"]
                  [lein-bikeshed "0.5.2"]]
 
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.11.3"]
-                                  [com.h2database/h2 "2.2.224"]]1
+                                  [com.h2database/h2 "2.2.224"]]
                    :plugins [[com.jakemccrary/lein-test-refresh "0.25.0"]]}
              :uberjar     {:aot :all}
              :production  {}}
