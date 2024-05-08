@@ -2,7 +2,8 @@
   "Contains primary logic to convert and execute flyway task"
   (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
-            [clojure.string :as str])
+            [clojure.string :as str]
+            [leiningen.core.main :as l])
   (:import
     [java.util Properties]
     [org.flywaydb.core Flyway]
@@ -45,10 +46,12 @@
 (defn read-configuration
   "Read from flyway section of project EDN"
   ^Properties [path]
-  (-> path
-      (read-edn)
-      ; (enrich-configuration)
-      (map-2-property)))
+
+  (try (-> path
+           (read-edn)
+           ; (enrich-configuration)
+           (map-2-property))
+       (catch Exception _ (l/abort "flyway configuration file not found"))))
 
 (defn make-flyway
   "Create Flyway configuration object"
@@ -66,7 +69,7 @@
 (defn info
   "Execute Flyway info"
   [^Flyway fw]
-  (println (MigrationInfoDumper/dumpToAsciiTable (.. fw info all))))
+  (l/info (MigrationInfoDumper/dumpToAsciiTable (.. fw info all))))
 
 (defn migrate
   "Execute Flyway migrate"

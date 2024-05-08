@@ -1,5 +1,5 @@
-(defproject al.rug/lein-flyway "0.0.1-SNAPSHOT"
-  :description "Flyway leiningen plugin that is upgraded to match flyway-core 9.22.x version"
+(defproject al.rug/lein-flyway "1.0.0-SNAPSHOT"
+  :description "Flyway leiningen plugin that is upgraded to match flyway-core 10.12.x version"
   :url "https://github.com/Rugal/lein-flyway"
   :license {:name "EPL-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
@@ -37,15 +37,17 @@
   :test-paths ["src/test/clojure"]
   :resource-paths ["src/main/resources"] ; Non-code files included in classpath/jar.
 
-  :dependencies [[org.flywaydb/flyway-core "9.22.3"]]
+  :dependencies [[org.flywaydb/flyway-core "10.12.0"]]
 
   :plugins      [[lein-environ "1.2.0"]
                  [lein-pprint "1.3.2"]
                  [lein-release "1.0.0"]
+                 [lein-try "0.4.3"]
+                 [lein-collisions "0.1.4"]
                  [lein-bikeshed "0.5.2"]]
 
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.11.1"]
-                                  [com.h2database/h2 "2.2.224"]]
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.11.3"]
+                                  [com.h2database/h2 "2.2.224"]]1
                    :plugins [[com.jakemccrary/lein-test-refresh "0.25.0"]]}
              :uberjar     {:aot :all}
              :production  {}}
