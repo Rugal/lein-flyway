@@ -6,4 +6,21 @@ For [local development](https://leiningen.org/plugins.html#local-development), h
 
 ## deploy to clojars
 
-Setup [authentication](https://codeberg.org/leiningen/leiningen/src/branch/stable/doc/DEPLOY.md#authentication) and use `lein release`
+
+### Setup credential
+Setup [authentication](https://codeberg.org/leiningen/leiningen/src/branch/stable/doc/DEPLOY.md#authentication) and use 
+
+Edit `~/.lein/profiles.clj`  
+
+```edn
+{:auth {:repository-auth {#"clojars" {:username "xxxxx"
+                                      :password "CLOJARS_xxxxxx"}}}}
+```
+
+### release
+
+Must ensure that current version is suffix with `-SNAPSHOT` while executing command below:  
+
+```shell
+lein release
+```
