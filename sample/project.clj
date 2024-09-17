@@ -2,14 +2,6 @@
   :description "A generic template for clojure"
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
-  :mirrors {#"clojars"
-            {:name "Clojar Mirror"
-             :url "https://mirrors.tuna.tsinghua.edu.cn/clojars"
-             :repo-manager true}
-            #"central"
-            {:name "Maven aliyun"
-             :url "https://maven.aliyun.com/repository/public"
-             :repo-manager true}}
   :dependencies [[org.clojure/clojure "1.11.1"]
                  ;ring
                  ;database

@@ -3,14 +3,6 @@
   :url "https://github.com/Rugal/lein-flyway"
   :license {:name "EPL-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
-  :mirrors {#"clojars"
-            {:name "Clojar Mirror"
-             :url "https://mirrors.tuna.tsinghua.edu.cn/clojars"
-             :repo-manager true}
-            #"central"
-            {:name "Maven aliyun"
-             :url "https://maven.aliyun.com/repository/public"
-             :repo-manager true}}
 
   ; in order to avoid extra parameter
   :deploy-repositories [["releases" :clojars]
@@ -28,7 +20,7 @@
                   [:name "Rugal Bernstein"]
                   [:url "https://github.com/Rugal"]
                   [:email "this@rug.al"]
-                  [:timezone "+8"]]]
+                  [:timezone "-5"]]]
 
   :eval-in-leiningen true
 
